@@ -3,10 +3,10 @@ pipeline {
      stages {
          stage('build') {
               when {
-                  branch 'dev'
+                  branch 'master'
               }
               steps {
-                 echo "Working on dev branch"
+                 echo "Working on master branch"
               }
          }
      }
