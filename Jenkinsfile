@@ -1,15 +1,13 @@
 pipeline {
-    agent {
-        label 'linux'
+    agent any
+    tools {
+        maven 'MAVEN_PATH'
     }
     stages {
-        stage('Initialization') {
-            environment {
-                   JOB_TIME = sh (returnStdout: true, script: "date '+%A %W %Y %X'").trim()
-            }
-            steps {
-                sh 'echo $JOB_TIME'
-            }
-        }
-    }
+         stage('Load Tools') {
+              steps {
+                 sh "mvn -version"
+              }
+         }
+     }
 }
