@@ -1,13 +1,11 @@
 pipeline {
-     agent any
-     stages {
-         stage('build') {
-              when {
-                  branch 'master'
-              }
-              steps {
-                 echo "Working on master branch"
-              }
-         }
-     }
+    agent any
+    stages {
+        stage('Initialization') {
+            steps {
+                echo "${JAVA_HOME}"
+                bat "java -version"
+            }
+        }
+   }
 }
