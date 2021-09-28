@@ -1,24 +1,19 @@
 pipeline {
-     agent any
-     stages {
-         stage('build step') {
-              steps {
-                 echo "Build stage is running"
-              }
-         }
-     }
-     post {
-         always {
-             echo "You can always see me"
-         }
-         success {
-              echo "I am running because the job ran successfully"
-         }
-         unstable {
-              echo "Gear up ! The build is unstable. Try fix it"
-         }
-         failure {
-             echo "OMG ! The build failed"
-         }
-     }
+    agent any
+    environment {
+        DEPLOY_TO = 'production'
+    }
+    stages {
+        stage('Welcome Step') {
+            when {
+                anyOf {
+                    branch 'master';
+                    branch 'staging'
+                }
+            }
+            steps {
+                echo 'Welcome to LambdaTest'
+            }
+        }
+    }
 }
